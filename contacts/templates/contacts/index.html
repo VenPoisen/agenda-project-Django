@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block 'conteudo' %}
-<h1 class="mt-5">Minha agenda</h1>
+<h1 class="mt-5">My Agenda</h1>
 
 <table class="table">
     <thead>
@@ -13,30 +13,16 @@
         </tr>
     </thead>
     <tbody>
+        {% for contact in contacts %}
         <tr>
             <td>
-                <a href="#"> João</a>
+                <a href="#"> {{ contact.name }}</a>
             </td>
-            <td>Miranda</td>
-            <td>35 9 5555-5555</td>
-            <td>Family</td>
+            <td>{{ contact.last_name }}</td>
+            <td>{{ contact.telephone }}</td>
+            <td>{{ contact.category }}</td>
         </tr>
-        <tr>
-            <td>
-                <a href="#"> Leandro</a>
-            </td>
-            <td>Moreira</td>
-            <td>35 9 8888-5555</td>
-            <td>Family</td>
-        </tr>
-        <tr>
-            <td>
-                <a href="#"> Fátima</a>
-            </td>
-            <td>Oliveira</td>
-            <td>35 9 9999-4352</td>
-            <td>Work</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 
