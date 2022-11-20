@@ -6,6 +6,7 @@
 <table class="table">
     <thead>
         <tr>
+            <!-- <th>ID</th> -->
             <th>Name</th>
             <th>Last name</th>
             <th>Telephone</th>
@@ -16,6 +17,9 @@
         {% for contact in contacts %}
         {% if contact.show %}
         <tr>
+            <!-- <td>
+                {{ contact.id }}
+            </td> -->
             <td>
                 <a href="{% url 'open_contact' contact.id %}"> {{ contact.name }}</a>
             </td>
@@ -33,11 +37,11 @@
         {% for page in contacts.paginator.page_range %}
         {% if contacts.number == page %}
         <li class="page-item active">
-            <a class="page-link" href="?p={{ page }}">{{page}}</a>
+            <a class="page-link" href="?p={{ page }}&term={{ request.GET.term }}">{{page}}</a>
         </li>
         {% else %}
         <li class="page-item">
-            <a class="page-link" href="?p={{ page }}">{{page}}</a>
+            <a class="page-link" href="?p={{ page }}&term={{ request.GET.term }}">{{page}}</a>
         </li>
         {% endif %}
         {% endfor %}
