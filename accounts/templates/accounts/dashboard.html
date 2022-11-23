@@ -14,4 +14,19 @@
 <p>
     Your username is {{ user }}.
 </p>
+
+<div class="container">
+    <form action="{% url 'dashboard' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table">
+            {{ form }}
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn"
+                        style="background-color: #343a40; color: white; font-weight: 600;">Create</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 {% endblock %}
