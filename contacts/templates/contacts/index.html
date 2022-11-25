@@ -3,34 +3,42 @@
 {% block 'conteudo' %}
 <h1 class="mt-5">My Agenda</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <!-- <th>ID</th> -->
-            <th>Name</th>
-            <th>Last name</th>
-            <th>Telephone</th>
-            <th>Category</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for contact in contacts %}
-        {% if contact.show %}
-        <tr>
-            <!-- <td>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>Name</th>
+                <th>Last name</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            {% if contact.show %}
+            <tr>
+                <!-- <td>
                 {{ contact.id }}
             </td> -->
-            <td>
-                <a href="{% url 'open_contact' contact.id %}"> {{ contact.name }}</a>
-            </td>
-            <td>{{ contact.last_name }}</td>
-            <td>{{ contact.telephone }}</td>
-            <td>{{ contact.category }}</td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-    </tbody>
-</table>
+                <td>
+                    <a href="{% url 'open_contact' contact.id %}"> {{ contact.name }}</a>
+                </td>
+                <td>{{ contact.last_name }}</td>
+                <td>{{ contact.telephone }}</td>
+                {% if not contact.email %}
+                <td> - </td>
+                {% else %}
+                <td>{{ contact.email }}</td>
+                {% endif %}
+                <td>{{ contact.category }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <nav aria-label="Page navigation example">
     <ul class="pagination">
