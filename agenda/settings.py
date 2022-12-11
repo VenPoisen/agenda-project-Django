@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from django.contrib.messages import constants
 from pathlib import Path
+import os
 from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
