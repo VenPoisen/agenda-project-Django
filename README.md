@@ -10,5 +10,5 @@
  * Dashboard page :arrow_right: Only accessed if the user is logged in, can create new Contacts
  * Admin page :arrow_right: Accessed by superuser to edit, create and delete users or contacts
  
-### Deploy on Render.com
- This Project was deployed using a free account web service on [Render.com](https://agenda-django.onrender.com/)
+### Deploy on AWS EC2
+ This Project was deployed using an instance on EC2 --> [Open the site](https://agenda.alanmf.com)
