@@ -12,27 +12,27 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from django.contrib.messages import constants
 from pathlib import Path
-from os import environ
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Take environment variables from .env file on root.
+environ.Env.read_env(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = environ.get('SECRET_KEY', '.env')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if environ.get('DEBUG', 'env') == '1' else False
+DEBUG = True if env('DEBUG') == '1' else False
 
-ALLOWED_HOSTS = ['agenda-django.onrender.com', 'agenda.alanmf.com', '*']
-
-RENDER_EXTERNAL_HOSTNAME = environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+ALLOWED_HOSTS = ['agenda.alanmf.com']
 
 # Application definition
 
@@ -141,7 +141,7 @@ MEDIA_URL = 'media/'
 
 # Admin page
 
-ADMIN_ENABLED = True if environ.get('ADMIN_ENABLED') == '1' else False
+ADMIN_ENABLED = True if env('ADMIN_ENABLED') == '1' else False
 if ADMIN_ENABLED:
     INSTALLED_APPS.append('django.contrib.admin',)
 
